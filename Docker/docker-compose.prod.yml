@@ -1,0 +1,36 @@
+version: '3.1'
+
+services:
+  nodejs:
+    build:
+      context: ../
+      dockerfile: Docker/nodejs/Dockerfile.prod
+    container_name: devops_tp_nodejs
+    environment:
+      - NODE_ENV=production
+      - PORT=3000
+      - DB_USER=admin
+      - DB_PASSWORD=azertyuiop01
+      - DB_NAME=test
+      - DB_HOST=devops_tp_postgres
+    ports:
+    - 3000:3000
+    depends_on:
+      - postgres
+    networks:
+      - sub_network_db
+      - sub_network_node
+  postgres:
+    image: postgres
+    container_name: devops_tp_postgres
+    environment:
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: azertyuiop01
+      PGDATA: /data/postgres
+    restart: unless-stopped
+    networks:
+      - sub_network_db
+
+networks:
+  sub_network_db:
+  sub_network_node:

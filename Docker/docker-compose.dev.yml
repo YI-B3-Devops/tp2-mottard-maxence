@@ -3,8 +3,8 @@ version: '3.1'
 services:
   nodejs:
     build:
-      context: ./src
-      dockerfile: Dockerfile
+      context: ../
+      dockerfile: Docker/nodejs/Dockerfile.dev
     container_name: devops_tp_nodejs
     environment:
       - NODE_ENV=production
@@ -14,9 +14,9 @@ services:
       - DB_NAME=test
       - DB_HOST=devops_tp_postgres
     volumes:
-      - ./src:/home/node/app
+      - ../:/home/node/app
     ports:
-    - 3000:3000
+      - 3000:3000
     depends_on:
       - postgres
     networks:
@@ -28,9 +28,8 @@ services:
     environment:
       POSTGRES_USER: admin
       POSTGRES_PASSWORD: azertyuiop01
+      POSTGRES_DB: test
       PGDATA: /data/postgres
-    volumes:
-      - ./database:/data/postgres
     restart: unless-stopped
     networks:
       - sub_network_db

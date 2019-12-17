@@ -1,5 +1,9 @@
 FROM node:13.3-alpine
 ENV PORT 3000
+ENV DB_USER postgres
+ENV DB_PASSWORD postgres
+ENV DB_NAME postgres
+ENV DB_HOST postgres
 
 WORKDIR /home/node/app
 RUN chown -R node:node /home/node/app
@@ -10,4 +14,4 @@ RUN yarn install
 COPY . .
 
 EXPOSE 3000
-CMD ["yarn", "dev"]
+CMD ["yarn", "start"]
