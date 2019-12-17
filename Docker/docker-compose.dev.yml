@@ -5,7 +5,7 @@ services:
     build:
       context: ../
       dockerfile: Docker/nodejs/Dockerfile.dev
-    container_name: devops_tp_nodejs
+    container_name: api
     environment:
       - NODE_ENV=production
       - PORT=3000
