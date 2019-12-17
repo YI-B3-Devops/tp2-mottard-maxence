@@ -19,6 +19,7 @@ services:
       - 3000:3000
     depends_on:
       - postgres
+      - redis
     networks:
       - sub_network_db
       - sub_network_node
@@ -31,6 +32,11 @@ services:
       POSTGRES_DB: test
       PGDATA: /data/postgres
     restart: unless-stopped
+    networks:
+      - sub_network_db
+  redis:
+    image: redis
+    container_name: devops_tp_redis
     networks:
       - sub_network_db
 
