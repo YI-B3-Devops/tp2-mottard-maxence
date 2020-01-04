@@ -7,7 +7,7 @@
   "license": "MIT",
   "scripts": {
     "start": "node index.js",
-    "dev": "nodemon index.js",
+    "dev": "./node_modules/.bin/nodemon index.js",
     "compose-prod": "docker-compose -f Docker/docker-compose.prod.yml up --build",
     "compose-dev": "docker-compose -f Docker/docker-compose.dev.yml up --build"
   },

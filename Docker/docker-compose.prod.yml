@@ -5,7 +5,7 @@ services:
     build:
       context: ../
       dockerfile: Docker/nodejs/Dockerfile.prod
-    container_name: devops_tp_nodejs
+    container_name: api
     environment:
       - NODE_ENV=production
       - PORT=3000
@@ -17,6 +17,7 @@ services:
     - 3000:3000
     depends_on:
       - postgres
+      - redis
     networks:
       - sub_network_db
       - sub_network_node
@@ -40,6 +41,8 @@ services:
     build:
       context: ./nginx
       dockerfile: Dockerfile
+    depends_on:
+      - nodejs
     environment:
       - HOSTNAME=devops_tp_nodejs:3000
     networks:

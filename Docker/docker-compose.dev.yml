@@ -43,6 +43,8 @@ services:
       dockerfile: Dockerfile
     environment:
       - HOSTNAME=devops_tp_nodejs:3000
+    depends_on:
+      - nodejs
     networks:
       - sub_network_node
     ports:
