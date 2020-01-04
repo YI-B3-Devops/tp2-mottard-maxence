@@ -107,4 +107,4 @@ dist
 
 .idea/
 .DS_Store
-database/
+Docker/postgres-persistent/*

@@ -30,6 +30,8 @@ services:
       POSTGRES_DB: test
       PGDATA: /data/postgres
     restart: unless-stopped
+    volumes:
+      - ./postgres-persistent:/data/postgres
     networks:
       - sub_network_db
   redis:

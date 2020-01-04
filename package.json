@@ -8,8 +8,8 @@
   "scripts": {
     "start": "node index.js",
     "dev": "./node_modules/.bin/nodemon index.js",
-    "compose-prod": "docker-compose -f Docker/docker-compose.prod.yml up --build",
-    "compose-dev": "docker-compose -f Docker/docker-compose.dev.yml up --build"
+    "compose-prod": "docker-compose -f Docker/docker-compose.prod.yml up --build --force-recreate",
+    "compose-dev": "docker-compose -f Docker/docker-compose.dev.yml up --build --force-recreate"
   },
   "dependencies": {
     "cors": "^2.8.5",
